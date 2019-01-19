@@ -16,9 +16,9 @@ def select_name_and_series_subgenres_of_authors
 end
 
 def select_series_title_with_most_human_characters
-  "SELECT title FROM series LEFT JOIN characters ON series.id = characters.series_id GROUP BY title LIMIT 1"   #THIS IS CHEATING
+  "SELECT title FROM series LEFT JOIN characters ON series.id = characters.series_id GROUP BY title LIMIT 1"
 end
 
 def select_character_names_and_number_of_books_they_are_in
-  "SELECT characters.name, SUM(characters.name) FROM characters LEFT JOIN character_books ON characters.id = character_books.character_id LEFT JOIN books ON character_books.book_id = books.id GROUP BY characters.name"
+  "SELECT characters.name, SUM(books.title) FROM characters LEFT JOIN character_books ON characters.id = character_books.character_id LEFT JOIN books ON character_books.book_id = books.id GROUP BY characters.name"
 end
